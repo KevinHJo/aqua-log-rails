@@ -20,8 +20,14 @@ module.exports = {
       }
     ]
   },
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
   resolve: {
+    fallback: {
+      buffer: false,
+      path: false,
+      assert: false,
+      fs: false
+    },
     extensions: ['.js', '.jsx', '*']
   }
 };
