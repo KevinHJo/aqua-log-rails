@@ -5,10 +5,10 @@ class TankShow extends React.Component {
     super(props);
 
     this.state = {
-      logType: '',
+      log_type: '',
       value: '',
-      tank: this.props.tankId,
-      user: this.props.currentUser.id,
+      tank_id: this.props.tankId,
+      user_id: this.props.currentUser.id,
       date: new Date().toISOString().slice(0, 10),
       modal: false
     }
@@ -24,31 +24,32 @@ class TankShow extends React.Component {
       this.props.fetchTank(this.props.tankId)
     }
 
-    // this.props.fetchTankLogs(this.props.tankId)
+    this.props.fetchTankLogs(this.props.tankId)
   }
 
   handleSubmit() {
-    debugger
     this.props.createLog({
-      logType: this.state.logType,
+      log_type: this.state.log_type,
       value: this.state.value,
-      tank: this.state.tank,
-      user: this.state.user,
+      tank_id: this.state.tank_id,
+      user_id: this.state.user_id,
       date: new Date(this.state.date),
     });
 
     this.setState({
-      logType: '',
+      log_type: '',
       value: '',
-      tank: this.props.tankId,
-      user: this.props.currentUser.id,
+      tank_id: this.props.tankId,
+      user_id: this.props.currentUser.id,
       date: new Date().toISOString().slice(0, 10),
       modal: false
     })
   }
 
   update(field) {
-    return (e) => this.setState({[field]: e.currentTarget.value})
+    return (e) => {
+      this.setState({[field]: e.currentTarget.value})
+    }
   }
 
   sendToLog(logId) {
@@ -62,10 +63,10 @@ class TankShow extends React.Component {
   renderCreateLogForm() {
     if (this.state.modal) {
       return (
-        <div id='create-tank-form-container'>
-          <form id='create-tank-form' onSubmit={this.handleSubmit}>
-            <label htmlFor='logType'>Value: </label>
-            <select name='logType' onChange={this.update('logType')} defaultValue="">
+        <div id='create-tank-form-container' onClick={() => this.toggleCreateLogForm()}>
+          <form id='create-tank-form' onSubmit={this.handleSubmit} onClick={(e) => e.stopPropagation()}>
+            <label htmlFor='logType'>Log Type: </label>
+            <select name='logType' onChange={this.update('log_type')} defaultValue="">
               <option className='disabled-option' value="" disabled>Select a Parameter</option>
               <option value="temperature">Temperature</option>
               <option value="ammonia">Ammonia</option>
@@ -93,7 +94,7 @@ class TankShow extends React.Component {
             />
 
             <label htmlFor='date'>Date: </label>
-            <input type="date" 
+            <input type="datetime-local" 
               name='date'
               value={this.state.date}
               onChange={this.update('date')}
@@ -131,7 +132,7 @@ class TankShow extends React.Component {
             <h2>Logs</h2>
             {this.props.logs.map( log => {
               return (
-                <li key={`log-${log._id}`} className='tank-log-list-item' onClick={() => this.sendToLog(log._id)}>
+                <li key={`log-${log.id}`} className='tank-log-list-item' onClick={() => this.sendToLog(log.id)}>
                   <p>{new Date(log.date).toLocaleDateString(undefined, dateOptions)} - {new Date(log.date).toLocaleTimeString([], timeOptions)}</p>
                 </li>
               )

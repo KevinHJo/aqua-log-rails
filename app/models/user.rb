@@ -24,6 +24,8 @@ class User < ApplicationRecord
   has_many :tanks,
     foreign_key: :owner_id
 
+  has_many :logs
+
   after_initialize :ensure_session_token
   
   attr_reader :password

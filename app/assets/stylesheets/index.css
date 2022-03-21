@@ -1,0 +1,18 @@
+#root {
+  height: 100vh;
+}
+
+#page {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; */
+  height: 100%;
+  background-image: url(https://raw.githubusercontent.com/KevinHJo/aqua-log/main/frontend/public/assets/images/cristian-palmer-XexawgzYOBc-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: 210vh;
+  /* background: black; */
+}
+
+.nav-fix {
+  height: 4%;
+}
