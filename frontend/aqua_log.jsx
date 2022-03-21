@@ -5,11 +5,11 @@ import Root from './components/root'
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
-
+  
   if (window.currentUser) {
     const preloadedState = {
       entities: {
-        users: { [window.currentUser.id]: window.currentUser }
+        users: { [window.currentUser.user.id]: window.currentUser.user }
       },
       session: { id: window.currentUser.id }
     };

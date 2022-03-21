@@ -6,7 +6,7 @@ const SessionReducer = (state = {id: null, isAuthenticated: false}, action) => {
   
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      nextState['id'] = action.user.id;
+      nextState['id'] = action.data.user.id;
       nextState.isAuthenticated = true
       return nextState;
     case LOGOUT_CURRENT_USER:
