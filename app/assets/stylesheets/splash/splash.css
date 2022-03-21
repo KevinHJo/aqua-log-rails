@@ -1,0 +1,14 @@
+#splash-head {
+  background-image: url(https://raw.githubusercontent.com/KevinHJo/aqua-log/main/frontend/public/assets/images/ImageBank_Fish_Amanda-Cotton_01-1536x986.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: 10px solid black;
+  height: 750px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  text-shadow: 5px 5px black;
+}

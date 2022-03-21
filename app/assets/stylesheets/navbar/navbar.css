@@ -1,0 +1,61 @@
+#navbar {
+  position: fixed;
+  width: 100vw;
+  height: 4%;
+  background: rgb(52, 96, 133);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#nav-icon {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  color: white;
+}
+
+#nav-icon img {
+  height: 30px;
+  margin-left: 10px;
+}
+
+#nav-icon:hover {
+  cursor: pointer;
+  background-color: rgb(44, 83, 114);
+}
+
+#nav-icon:active {
+  background-color: rgb(33, 64, 88);
+}
+
+#nav-links {
+  display: flex;
+  padding-right: 25px;
+}
+
+#nav-links a {
+  padding: 10px;
+  color: white;
+}
+
+#nav-links a:hover {
+  background:rgb(44, 83, 114);
+}
+
+#nav-links button {
+  color: white;
+  border: none;
+  background: rgb(52, 96, 133);
+
+}
+
+#nav-links button:hover {
+  cursor: pointer;
+  background: rgb(44, 83, 114);
+}
+
+#nav-links button:active {
+  cursor: pointer;
+  background: rgb(33, 64, 88);
+}
