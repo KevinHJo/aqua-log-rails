@@ -5,11 +5,10 @@ import { fetchTankLogs, createLog } from '../../actions/log_actions';
 
 
 const mSTP = (state, ownProps) => {
-  debugger
   return {
     tankId: ownProps.match.params.tankId,
     tank: state.entities.tanks[ownProps.match.params.tankId],
-    logs: Object.values(state.entities.logs),
+    logs: Object.values(state.entities.logs).sort( (a, b) => new Date(a.date) - new Date(b.date)),
     currentUser: state.entities.users[state.session.id]
   };
 }

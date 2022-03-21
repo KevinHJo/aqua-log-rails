@@ -1,0 +1,40 @@
+#tank-show-page {
+  height: 96%;
+  width: 75%;
+  margin: auto;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  background: rgba(255, 255, 255, 1.0);
+}
+
+#tank-show-name {
+  font-size: 100px;
+  color: rgb(52, 96, 133);
+}
+
+#tank-log-list {
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#tank-log-list h2 {
+  font-size: 50px;
+  color: rgb(52, 96, 133);
+}
+
+.tank-log-list-item {
+  padding: 10px 20px;
+  font-size: 25px;
+  list-style: none;
+}
+
+.tank-log-list-item:hover {
+  cursor: pointer;
+  background: rgba(52, 96, 133, 1);
+  color: white;
+}
