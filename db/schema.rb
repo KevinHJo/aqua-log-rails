@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_21_024910) do
+ActiveRecord::Schema.define(version: 2022_03_21_050731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "logs", force: :cascade do |t|
+    t.string "log_type", null: false
+    t.integer "user_id", null: false
+    t.integer "tank_id", null: false
+    t.float "value", null: false
+    t.datetime "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tank_id"], name: "index_logs_on_tank_id"
+    t.index ["user_id"], name: "index_logs_on_user_id"
+  end
 
   create_table "tanks", force: :cascade do |t|
     t.string "name", null: false
