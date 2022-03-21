@@ -17,4 +17,8 @@
 #  index_logs_on_user_id  (user_id)
 #
 class Log < ApplicationRecord
+  validates :log_type, :user_id, :tank_id, :value, :date, presence: true
+
+  belongs_to :tank
+  belongs_to :user
 end

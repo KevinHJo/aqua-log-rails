@@ -8,9 +8,22 @@
 
 User.destroy_all
 Tank.destroy_all
+Log.destroy_all
 
 # Seed users
+puts("Creating users")
 demo_user = User.create({username: "demo", email: "demo@email.com", password: "password"})
+puts("Done! :)")
+puts("----------------------------------------")
 
 # Seed tanks
+puts("Creating tanks")
 tank1 = Tank.create({name: "Waterbox P25", owner_id: demo_user.id})
+puts("Done! :)")
+puts("----------------------------------------")
+
+# Seed logs
+puts("Creating logs")
+log1 = Log.create({log_type: "ammonia", value: 2.5, user_id: demo_user.id, tank_id: tank1.id, date: "2022-03-20 10:00:00 UTC"})
+puts("Done! :)")
+puts("----------------------------------------")
