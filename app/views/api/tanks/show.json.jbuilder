@@ -1,0 +1,1 @@
+json.extract! @tank, :id, :name, :owner_id

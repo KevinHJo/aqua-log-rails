@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+Tank.destroy_all
+
+# Seed users
+demo_user = User.create({username: "demo", email: "demo@email.com", password: "password"})
+
+# Seed tanks
+tank1 = Tank.create({name: "Waterbox P25", owner_id: demo_user.id})

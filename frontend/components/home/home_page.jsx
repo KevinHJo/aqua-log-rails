@@ -6,7 +6,7 @@ class HomePage extends React.Component {
 
     this.state = {
       name: '',
-      user: this.props.currentUser.id,
+      owner_id: this.props.currentUser.id,
       modal: false
     }
 
@@ -16,7 +16,9 @@ class HomePage extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchUserTanks(this.props.currentUser.id)
+    if (this.props.userTanks.length === 0) {
+      this.props.fetchUserTanks(this.props.currentUser.id)
+    }
   }
 
   sendToTank(tankId) {
@@ -44,7 +46,6 @@ class HomePage extends React.Component {
   }
 
   renderCreateTankForm() {
-    // debugger
     if (this.state.modal) {
       return (
         <div id='create-tank-form-container' onClick={this.toggleCreateTank}>
@@ -75,13 +76,13 @@ class HomePage extends React.Component {
       <div id='home-page'>
         <h1 id='home-page-header'>Welcome {this.props.currentUser.username}!</h1>
         
-        {/* {this.renderCreateTankForm()} */}
+        {this.renderCreateTankForm()}
 
         <ul className='home-tank-list'>
           <h2>Your Tanks:</h2>
-          {/* {this.props.userTanks.map( tank => {
-            return <li key={`tank-${tank._id}`} className='home-tank-list-item' onClick={() => this.sendToTank(tank._id)}>{tank.name}</li>
-          })} */}
+          {this.props.userTanks.map( tank => {
+            return <li key={`tank-${tank.id}`} className='home-tank-list-item' onClick={() => this.sendToTank(tank.id)}>{tank.name}</li>
+          })}
         </ul>
         <button onClick={this.toggleCreateTank}>Add a Tank</button>
       </div>
