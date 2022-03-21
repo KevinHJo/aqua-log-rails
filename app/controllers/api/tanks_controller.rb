@@ -3,6 +3,11 @@ class Api::TanksController < ApplicationController
     @tanks = Tank.where({owner_id: params[:user_id]})
     render 'api/tanks/index'
   end
+  
+  def show
+    @tank = Tank.find(params[:id])
+    render 'api/tanks/show'
+  end
 
   def create
     @tank = Tank.new(tank_params)

@@ -7,6 +7,7 @@ import HomePageContainer from './home/home_page_container';
 import NavBarContainer from './nav/navbar_container';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
+import TankShowContainer from './tank/tank_show_container';
 
 const App = () => (
   <div id='page'>
@@ -15,7 +16,7 @@ const App = () => (
     <Switch>
       <AuthRoute exact path='/' component={Splash} />
       <ProtectedRoute exact path="/home" component={HomePageContainer} />
-      {/* <ProtectedRoute exact path="/tanks/:tankId" component={TankShowContainer} /> */}
+      <ProtectedRoute exact path="/tanks/:tankId" component={TankShowContainer} />
       {/* <ProtectedRoute exact path="/logs/:logId" component={LogShowContainer} /> */}
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />

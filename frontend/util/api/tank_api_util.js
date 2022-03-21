@@ -6,6 +6,13 @@ export const createTank = tank => {
   })
 }
 
+export const fetchTank = tankId => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/tanks/${tankId}`
+  })
+}
+
 export const fetchUserTanks = userId => {
   return $.ajax({
     method: 'GET',
