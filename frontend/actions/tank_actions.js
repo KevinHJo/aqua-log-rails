@@ -33,4 +33,10 @@ export const createTank = tank => dispatch => {
   }, err => (
     dispatch(receiveTankErrors(err.responseJSON))
   ))
-}
+};
+
+export const fetchUserTanks = userId => dispatch => {
+  return TankAPIUtil.fetchUserTanks(userId).then(tanks => {
+    dispatch(receiveTanks(tanks))
+  });
+};
