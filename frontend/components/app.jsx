@@ -8,6 +8,8 @@ import NavBarContainer from './nav/navbar_container';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import TankShowContainer from './tank/tank_show_container';
+import PostIndexContainer from './post/post_index_container';
+import PostShowContainer from './post/post_show_container';
 
 const App = () => (
   <div id='page'>
@@ -17,7 +19,8 @@ const App = () => (
       <AuthRoute exact path='/' component={Splash} />
       <ProtectedRoute exact path="/home" component={HomePageContainer} />
       <ProtectedRoute exact path="/tanks/:tankId" component={TankShowContainer} />
-      {/* <ProtectedRoute exact path="/logs/:logId" component={LogShowContainer} /> */}
+      <ProtectedRoute exact path="/forum" component={PostIndexContainer}/>
+      <ProtectedRoute exact path="/forum/:postId" component={PostShowContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </Switch>

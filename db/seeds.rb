@@ -9,10 +9,13 @@
 User.destroy_all
 Tank.destroy_all
 Log.destroy_all
+Post.destroy_all
 
 # Seed users
 puts("Creating users")
 demo_user = User.create({username: "demo", email: "demo@email.com", password: "password"})
+kevin = User.create({username: "Kevin", email: "kevin@email.com", password: "password"})
+rachael = User.create({username: "Rachael", email: "rachael@email.com", password: "password"})
 puts("Done! :)")
 puts("----------------------------------------")
 
@@ -48,5 +51,14 @@ nitrate4 = Log.create({log_type: "nitrate", value: 0.0, user_id: demo_user.id, t
 nitrate5 = Log.create({log_type: "nitrate", value: 0.0, user_id: demo_user.id, tank_id: tank1.id, date: "2022-03-19 10:00:00 UTC"})
 nitrate6 = Log.create({log_type: "nitrate", value: 0.0, user_id: demo_user.id, tank_id: tank1.id, date: "2022-03-20 10:00:00 UTC"})
 nitrate7 = Log.create({log_type: "nitrate", value: 0.0, user_id: demo_user.id, tank_id: tank1.id, date: "2022-03-21 10:00:00 UTC"})
+puts("Done! :)")
+puts("----------------------------------------")
+
+# Seed posts
+puts("Creating posts")
+post1 = Post.create({body: "Hello! I'm new to AquaLog!", author_id: demo_user.id})
+post2 = Post.create({body: "Welcome! Make sure to follow the community guidelines and share your tank!", author_id: kevin.id, parent_id: post1.id})
+post3 = Post.create({body: "What powerhead should I get for a 25 gallon nano system?", author_id: kevin.id})
+post4 = Post.create({body: "I use an AI Nero 3. It's a little powerful for a small system, but it gets the job done and allows for a possible upgrade in the future", author_id: demo_user.id, parent_id: post3.id})
 puts("Done! :)")
 puts("----------------------------------------")
