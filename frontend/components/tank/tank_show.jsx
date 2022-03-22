@@ -1,4 +1,5 @@
 import React from 'react';
+import LogIndex from '../log/log_index';
 
 class TankShow extends React.Component {
   constructor(props) {
@@ -63,8 +64,8 @@ class TankShow extends React.Component {
   renderCreateLogForm() {
     if (this.state.modal) {
       return (
-        <div id='create-tank-form-container' onClick={() => this.toggleCreateLogForm()}>
-          <form id='create-tank-form' onSubmit={this.handleSubmit} onClick={(e) => e.stopPropagation()}>
+        <div id='create-log-form-container' onClick={() => this.toggleCreateLogForm()}>
+          <form id='create-log-form' onSubmit={this.handleSubmit} onClick={(e) => e.stopPropagation()}>
             <label htmlFor='logType'>Log Type: </label>
             <select name='logType' onChange={this.update('log_type')} defaultValue="">
               <option className='disabled-option' value="" disabled>Select a Parameter</option>
@@ -124,12 +125,10 @@ class TankShow extends React.Component {
 
       return (
         <div id='tank-show-page'>
-          <h1 id='tank-show-name'>{this.props.tank.name}</h1>
-
           {this.renderCreateLogForm()}
 
           <ul id='tank-log-list'>
-            <h2>Logs</h2>
+            <h2>All Logs</h2>
             {this.props.logs.map( log => {
               return (
                 <li key={`log-${log.id}`} className='tank-log-list-item' onClick={() => this.sendToLog(log.id)}>
@@ -137,9 +136,9 @@ class TankShow extends React.Component {
                 </li>
               )
             })}
+            <button onClick={this.toggleCreateLogForm}>Create New Log</button>
           </ul>
-
-          <button onClick={this.toggleCreateLogForm}>Create New Log</button>
+          <LogIndex logs={this.props.logs} toggleCreateLogForm={this.toggleCreateLogForm.bind(this)}/>
         </div>
       )
     } else {
@@ -148,7 +147,16 @@ class TankShow extends React.Component {
   }
 
   render() {
-    return this.renderTank()
+    let tankName
+    if (this.props.tank) {
+      tankName = this.props.tank.name
+    }
+    return (
+      <div id='tank-show-page-container'>
+        <h1 id='tank-show-name'>{tankName}</h1>
+        {this.renderTank()}
+      </div>
+    )
   }
 }
 

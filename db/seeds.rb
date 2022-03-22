@@ -24,6 +24,11 @@ puts("----------------------------------------")
 
 # Seed logs
 puts("Creating logs")
-log1 = Log.create({log_type: "ammonia", value: 2.5, user_id: demo_user.id, tank_id: tank1.id, date: "2022-03-20 10:00:00 UTC"})
+log1 = Log.create({log_type: "ammonia", value: 2.5, user_id: demo_user.id, tank_id: tank1.id, date: "2022-03-15 10:00:00 UTC"})
+log2 = Log.create({log_type: "ammonia", value: 2.0, user_id: demo_user.id, tank_id: tank1.id, date: "2022-03-16 10:00:00 UTC"})
+log3 = Log.create({log_type: "ammonia", value: 1.5, user_id: demo_user.id, tank_id: tank1.id, date: "2022-03-17 10:00:00 UTC"})
+log4 = Log.create({log_type: "ammonia", value: 1.0, user_id: demo_user.id, tank_id: tank1.id, date: "2022-03-18 10:00:00 UTC"})
+log5 = Log.create({log_type: "ammonia", value: 0.5, user_id: demo_user.id, tank_id: tank1.id, date: "2022-03-19 10:00:00 UTC"})
+log6 = Log.create({log_type: "ammonia", value: 0.2, user_id: demo_user.id, tank_id: tank1.id, date: "2022-03-20 10:00:00 UTC"})
 puts("Done! :)")
 puts("----------------------------------------")

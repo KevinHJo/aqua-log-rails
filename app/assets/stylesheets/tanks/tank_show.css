@@ -1,11 +1,19 @@
-#tank-show-page {
+#tank-show-page-container {
   height: 96%;
   width: 75%;
   margin: auto;
-  padding: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: white;
+}
+
+#tank-show-page {
+  height: 100%;
+  width: 75%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
   color: black;
   background: rgba(255, 255, 255, 1.0);
 }
@@ -16,20 +24,26 @@
 }
 
 #tank-log-list {
-  padding: 0px;
+  width: 20%;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
+}
+
+#tank-log-list::-webkit-scrollbar {
+  display: none;
 }
 
 #tank-log-list h2 {
-  font-size: 50px;
+  font-size: 25px;
   color: rgb(52, 96, 133);
 }
 
 .tank-log-list-item {
   padding: 10px 20px;
-  font-size: 25px;
+  font-size: 15px;
   list-style: none;
 }
 
