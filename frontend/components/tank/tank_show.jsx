@@ -1,5 +1,6 @@
 import React from 'react';
 import LogIndex from '../log/log_index';
+import moment from 'moment';
 
 class TankShow extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class TankShow extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderTank = this.renderTank.bind(this);
-    this.sendToLog = this.sendToLog.bind(this);
+    // this.sendToLog = this.sendToLog.bind(this);
     this.toggleCreateLogForm = this.toggleCreateLogForm.bind(this)
   }
 
@@ -53,9 +54,9 @@ class TankShow extends React.Component {
     }
   }
 
-  sendToLog(logId) {
-    this.props.history.push(`/logs/${logId}`);
-  }
+  // sendToLog(logId) {
+  //   this.props.history.push(`/logs/${logId}`);
+  // }
 
   toggleCreateLogForm() {
     this.setState({modal: !this.state.modal})
@@ -127,17 +128,20 @@ class TankShow extends React.Component {
         <div id='tank-show-page'>
           {this.renderCreateLogForm()}
 
-          <ul id='tank-log-list'>
-            <h2>All Logs</h2>
-            {this.props.logs.map( log => {
-              return (
-                <li key={`log-${log.id}`} className='tank-log-list-item' onClick={() => this.sendToLog(log.id)}>
-                  <p>{new Date(log.date).toLocaleDateString(undefined, dateOptions)} - {new Date(log.date).toLocaleTimeString([], timeOptions)}</p>
-                </li>
-              )
-            })}
+          <div id='tank-log-list-container'>
+            <ul id='tank-log-list'>
+              <h2>All Logs</h2>
+              {this.props.logs.map( log => {
+                return (
+                  <li key={`log-${log.id}`} className='tank-log-list-item'>
+                    <p>{log.log_type[0].toUpperCase() + log.log_type.slice(1)} - {moment(log.date).format('MM/DD/YY HH:MM A')}</p>
+                  </li>
+                )
+              })}
+            </ul>
             <button onClick={this.toggleCreateLogForm}>Create New Log</button>
-          </ul>
+          </div>
+          
           <LogIndex logs={this.props.logs} toggleCreateLogForm={this.toggleCreateLogForm.bind(this)}/>
         </div>
       )

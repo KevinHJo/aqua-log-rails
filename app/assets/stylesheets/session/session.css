@@ -57,3 +57,28 @@
 .session-error {
   font-size: 20px;
 }
+
+#form-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+#form-buttons button {
+  height: 40px;
+  width: 100px;
+  margin: auto;
+  margin-top: 50px;
+  background: rgb(52, 96, 133);
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+#form-buttons button:hover {
+  cursor: pointer;
+  background-color: rgb(43, 81, 112);
+}
+
+#form-buttons button:active {
+  background-color: rgb(31, 60, 83);
+}

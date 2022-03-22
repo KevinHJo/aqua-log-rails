@@ -9,8 +9,8 @@ function LogIndex(props) {
   
   let lineData;
   if (selectedLogs[0]) {
-    lineData = selectedLogs.slice(-7).map(log => [moment(log.date).format('MM/DD/YY HH:MM A'), log.value])
-    lineData.unshift(['x', `${modal}`])
+    lineData = selectedLogs.slice(-7).map(log => [moment(log.date).format('MM/DD/YY HH:MM A'), '',log.value])
+    lineData.unshift(['x', {role: 'annotation', type: 'string'}, `${modal}`])
   } else {
     lineData = [
       ['x', 'Value'],
@@ -23,16 +23,26 @@ function LogIndex(props) {
       [6, 0],
     ];
   }
-  
+
   const lineChartOptions = {
     title: `${modal.toUpperCase()}`,
     titleFontSize: 25,
     legend: {position: 'none'},
     hAxis: {
-      title: "Date"
+      title: "Date",
+      viewWindow: {
+        min: lineData[1][0],
+        max: lineData[lineData.length-1][0]
+      }
     },
     vAxis: {
       title: 'Value'
+    },
+    annotations: {
+      stem: {
+        color: 'ECECEC'
+      },
+      style: 'line'
     },
     series: {
       1: {curveType: 'function'}

@@ -54,6 +54,10 @@ class LoginForm extends React.Component {
     );
   }
 
+  loginDemoUser() {
+    this.props.login({email: 'demo@email.com', password: 'password'})
+  }
+
   render() {
     return (
       <div id='login-page'>
@@ -83,7 +87,10 @@ class LoginForm extends React.Component {
             />
           </div>
 
-          <input id='session-form-submit' type="submit" value="Login"/>
+          <div id='form-buttons'>
+            <input id='session-form-submit' type="submit" value="Login"/>
+            <button onClick={this.loginDemoUser.bind(this)}>Try a Demo</button>
+          </div>
         </form>
       </div>
       

@@ -66,6 +66,10 @@ class SignupForm extends React.Component {
     );
   }
 
+  loginDemoUser() {
+    this.props.login({email: 'demo@email.com', password: 'password'})
+  }
+
   render() {
     return (
       <div id='signup-page'>
@@ -112,7 +116,10 @@ class SignupForm extends React.Component {
             />
           </div>
 
-          <input id='session-form-submit' type="submit" value="Signup"/>
+          <div id='form-buttons'>
+            <input id='session-form-submit' type="submit" value="Signup"/>
+            <button onClick={this.loginDemoUser.bind(this)}>Try a Demo</button>
+          </div>
         </form>
       </div>
       
