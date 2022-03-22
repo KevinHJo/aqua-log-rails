@@ -32,6 +32,11 @@ const PostIndex = function(props) {
 
   return (
     <div id='post-item-list-container'>
+      <div id='post-item-list-header'>
+        <h1>✨ Welcome to the AquaLog Community Forum! ✨</h1>
+        <h3>Please be courteous and respectful to others</h3>
+      </div>
+
       <form onSubmit={handleSubmit} id='post-form'>
         <input id='post-form-title' type="text" value={values.title} placeholder='Title' onChange={handleChange('title')}/>
         <textarea
