@@ -59,3 +59,16 @@
   cursor: pointer;
   background: rgb(33, 64, 88);
 }
+
+#local-nav {
+  display: flex;
+}
+
+#local-nav a {
+  color: white;
+  padding: 7px;
+}
+
+#local-nav a:hover {
+  background:rgb(44, 83, 114);
+}

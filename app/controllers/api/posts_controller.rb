@@ -1,12 +1,20 @@
 class Api::PostsController < ApplicationController
   def index
     @posts = Post.where(parent_id: nil)
+    @users = []
+    @posts.each do |post|
+      @users << post.author
+    end
     render 'api/posts/index'
   end
 
   def show
     post = Post.find(params[:id])
     @posts = [post] + post.children
+    @users = []
+    @posts.each do |post_item|
+      @users << post_item.author
+    end
     render 'api/posts/index'
   end
 

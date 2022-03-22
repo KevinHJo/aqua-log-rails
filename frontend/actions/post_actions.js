@@ -12,10 +12,10 @@ const receivePost = post => {
   }
 }
 
-const receivePosts = posts => {
+const receivePosts = data => {
   return {
     type: RECEIVE_POSTS,
-    posts
+    data
   }
 }
 
@@ -28,14 +28,14 @@ const receivePostErrors = err => {
 
 // THUNK ACTION CREATORS
 export const fetchPosts = () => dispatch => {
-  return PostAPIUtil.fetchPosts().then(posts => {
-    dispatch(receivePosts(posts))
+  return PostAPIUtil.fetchPosts().then(data => {
+    dispatch(receivePosts(data))
   })
 }
 
 export const fetchPost = postId => dispatch => {
-  return PostAPIUtil.fetchPost(postId).then(posts => {
-    dispatch(receivePosts(posts))
+  return PostAPIUtil.fetchPost(postId).then(post => {
+    dispatch(receivePosts(post))
   })
 }
 

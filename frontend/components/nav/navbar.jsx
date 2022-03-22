@@ -42,7 +42,8 @@ class NavBar extends React.Component {
         </Link>
 
         <div id='local-nav'>
-          <Link to='/forum'>FORUM</Link>
+          <Link to='/home'>Tanks</Link>
+          <Link to='/forum'>Forum</Link>
         </div>
         
         { this.getLinks() }

@@ -4,7 +4,8 @@ import { fetchPosts } from "../../actions/post_actions"
 
 const mSTP = (state) => {
   return {
-    posts: Object.values(state.entities.posts)
+    posts: Object.values(state.entities.posts),
+    users: state.entities.users
   }
 }
 

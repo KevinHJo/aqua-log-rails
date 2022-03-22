@@ -10,7 +10,7 @@ const PostsReducer = (state={}, action) => {
       return nextState;
     case RECEIVE_POSTS:
       nextState = {};
-      action.posts.forEach(post => nextState[post.id] = post);
+      action.data.posts.forEach(post => nextState[post.id] = post);
       return nextState;
     default:
       return state;

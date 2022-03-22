@@ -5,7 +5,8 @@ import { fetchPost } from "../../actions/post_actions"
 const mSTP = (state, ownProps) => {
   return {
     posts: Object.values(state.entities.posts),
-    postId: ownProps.match.params.postId
+    postId: ownProps.match.params.postId,
+    users: state.entities.users
   }
 }
 
