@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER } from "../../actions/session_actions";
-import { RECEIVE_POSTS } from "../../actions/post_actions";
+import { RECEIVE_POSTS, RECEIVE_POST } from "../../actions/post_actions";
 
 const UsersReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -11,6 +11,9 @@ const UsersReducer = (state = {}, action) => {
       return nextState;
     case RECEIVE_POSTS:
       action.data.users.forEach(user => nextState[user.id] = user);
+      return nextState;
+    case RECEIVE_POST:
+      nextState[action.data.user.id] = action.data.user;
       return nextState;
     default:
       return state;

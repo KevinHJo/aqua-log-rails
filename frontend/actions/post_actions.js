@@ -5,10 +5,10 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_POST_ERRORS = 'RECEIVE_POST_ERRORS';
 
 // ACTION CREATORS
-const receivePost = post => {
+const receivePost = data => {
   return {
     type: RECEIVE_POST,
-    post
+    data
   }
 }
 
@@ -40,8 +40,8 @@ export const fetchPost = postId => dispatch => {
 }
 
 export const createPost = post => dispatch => {
-  return PostAPIUtil.createPost(post).then(post => {
-    dispatch(receivePost(post))
+  return PostAPIUtil.createPost(post).then(data => {
+    dispatch(receivePost(data))
   }, err => {
     dispatch(receivePostErrors(err.responseJSON))
   })
