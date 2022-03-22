@@ -56,9 +56,9 @@ puts("----------------------------------------")
 
 # Seed posts
 puts("Creating posts")
-post1 = Post.create({body: "Hello! I'm new to AquaLog!", author_id: demo_user.id})
-post2 = Post.create({body: "Welcome! Make sure to follow the community guidelines and share your tank!", author_id: kevin.id, parent_id: post1.id})
-post3 = Post.create({body: "What powerhead should I get for a 25 gallon nano system?", author_id: kevin.id})
-post4 = Post.create({body: "I use an AI Nero 3. It's a little powerful for a small system, but it gets the job done and allows for a possible upgrade in the future", author_id: demo_user.id, parent_id: post3.id})
+post1 = Post.create({title: 'New here!', body: "Hello! I'm new to AquaLog!", author_id: demo_user.id})
+post2 = Post.create({body: "Welcome! Make sure to follow the community guidelines and feel free to share your tank!", author_id: kevin.id, parent_id: post1.id})
+post3 = Post.create({title: 'What powerhead should I get?', body: "I'm setting up a 25 gallon nano reef system, and I was wondering what powerhead I should get. I plan to have a mix of SPS and LPS corals, so I think I need something decently powerful", author_id: kevin.id})
+post4 = Post.create({body: "I use an AI Nero 3. It's a little powerful for a small system, but it gets the job done and allows for a possible upgrade in the future. It'll be a good choice if you have SPS coral that need higher flow.", author_id: demo_user.id, parent_id: post3.id})
 puts("Done! :)")
 puts("----------------------------------------")

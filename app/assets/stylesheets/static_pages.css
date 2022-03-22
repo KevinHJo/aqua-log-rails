@@ -1,3 +1,19 @@
 /*  Place all the styles related to the StaticPages controller here.
  They will automatically be included in application.css.
  You can use Sass (SCSS) here: http://sass-lang.com/ */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(67, 123, 168);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(52, 96, 133);
+}

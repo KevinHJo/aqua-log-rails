@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 const PostIndex = function(props) {
   const [firstPost] = useState(props.posts[0])
   const [values, setValues] = useState({
-    body: "",
+    title: '',
+    body: '',
     author_id: props.currentUser.id
   })
 
@@ -23,32 +24,35 @@ const PostIndex = function(props) {
     e.preventDefault();
     props.createPost(values);
     setValues({
-      body: "",
+      title: '',
+      body: '',
       author_id: props.currentUser.id
     })
   }
 
   return (
     <div id='post-item-list-container'>
-      <ul id='post-item-list'>
-        {props.posts.map(post => {
-          return (
-            <li key={`post-${post.id}`} className='post-item' onClick={() => props.history.push(`/forum/${post.id}`)}>
-              <p className='post-item-username'>{props.users[post.author_id].username}</p>
-              <p className='post-item-body'>{post.body}</p>
-            </li>
-          )
-        })}
-      </ul>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="textarea"
+      <form onSubmit={handleSubmit} id='post-form'>
+        <input id='post-form-title' type="text" value={values.title} placeholder='Title' onChange={handleChange('title')}/>
+        <textarea
+          id='post-form-input'
           value={values.body}
           placeholder='Create a post'
           onChange={handleChange('body')}
         />
+        <input id='post-form-submit' type="submit" value='Create Post'/>
       </form>
+
+      <ul id='post-item-list'>
+        {props.posts.map(post => {
+          return (
+            <li key={`post-${post.id}`} className='post-item' onClick={() => props.history.push(`/forum/${post.id}`)}>
+              <p className='post-item-username'>posted by {props.users[post.author_id].username}</p>
+              <p className='post-item-title'>{post.title}</p>
+            </li>
+          )
+        })}
+      </ul>
     </div>
   )
 }

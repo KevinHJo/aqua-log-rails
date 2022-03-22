@@ -11,12 +11,21 @@ const PostShow = function(props) {
   if (props.posts[0]) {
     originalPost = props.posts.shift();
   } else {
-    originalPost = {body: "Loading"};
+    originalPost = {title: "Loading", body: "Loading"};
+  }
+  
+  let originalPoster;
+  if (props.users[originalPost.author_id]) {
+    originalPoster = props.users[originalPost.author_id]
+  } else {
+    originalPoster = {username: "On my way!"}
   }
 
   return (
     <div id='post-item-list-container'>
       <div id='original-post'>
+        <p className='post-item-username'>posted by {originalPoster.username}</p>
+        <p className='post-item-title'>{originalPost.title}</p>
         <p className='post-item-body'>{originalPost.body}</p>
       </div>
 
