@@ -21,5 +21,10 @@ class Post < ApplicationRecord
     class_name: :User
   
   belongs_to :parent,
-    class_name: :Post
+    class_name: :Post,
+    optional: true
+
+  has_many :children,
+    class_name: :Post,
+    foreign_key: :parent_id
 end

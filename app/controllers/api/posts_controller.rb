@@ -1,6 +1,12 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.where(parent_id: nil)
+    render 'api/posts/index'
+  end
+
+  def show
+    post = Post.find(params[:id])
+    @posts = [post] + post.children
     render 'api/posts/index'
   end
 

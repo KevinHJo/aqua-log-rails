@@ -40,6 +40,10 @@ class NavBar extends React.Component {
           <h2>AquaLog</h2>
           <img src="https://raw.githubusercontent.com/KevinHJo/aqua-log/main/frontend/public/assets/images/clownfish.png" alt=''/>
         </Link>
+
+        <div id='local-nav'>
+          <Link to='/forum'>FORUM</Link>
+        </div>
         
         { this.getLinks() }
       </div>
