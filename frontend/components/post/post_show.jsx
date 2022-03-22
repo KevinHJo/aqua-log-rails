@@ -2,23 +2,47 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 const PostShow = function(props) {
+  let originalPost;
+  if (props.posts[0]) {
+    originalPost = props.posts[0];
+  } else {
+    originalPost = {id: 0, title: "Loading", body: "Loading"};
+  }
+  
   const [lastPost] = useState(props.posts[props.posts.length - 1])
+  const [values, setValues] = useState({
+    body: '',
+    author_id: props.currentUser.id,
+    parent_id: originalPost.id
+  })
+
   useEffect(() => {
     props.fetchPost(props.postId)
   }, [lastPost])
-
-  let originalPost;
-  if (props.posts[0]) {
-    originalPost = props.posts.shift();
-  } else {
-    originalPost = {title: "Loading", body: "Loading"};
-  }
   
   let originalPoster;
   if (props.users[originalPost.author_id]) {
     originalPoster = props.users[originalPost.author_id]
   } else {
     originalPoster = {username: "On my way!"}
+  }
+
+  const handleSubmit = function(e) {
+    e.preventDefault();
+    props.createPost(values);
+    setValues({
+      body: '',
+      author_id: props.currentUser.id,
+      parent_id: originalPost.id
+    })
+  }
+
+  const handleChange = function(e) {
+    setValues((values) => ({
+        ...values,
+        body: e.target.value
+      })
+    )
   }
 
   return (
@@ -30,7 +54,17 @@ const PostShow = function(props) {
       </div>
 
       <ul id='post-item-list'>
-        {props.posts.map(post => {
+        <form onSubmit={handleSubmit} id='post-show-form'>
+          <textarea
+            id='post-form-input'
+            value={values.body}
+            placeholder='What are your thoughts?'
+            onChange={handleChange}
+          />
+          <input id='post-form-submit' type="submit" value='Comment'/>
+        </form>
+
+        {props.posts.slice(1).map(post => {
           return (
             <li key={`post-${post.id}`} className='post-item'>
               <p className='post-item-username'>{props.users[post.author_id].username}</p>

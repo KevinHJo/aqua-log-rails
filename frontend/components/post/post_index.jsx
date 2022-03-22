@@ -44,7 +44,7 @@ const PostIndex = function(props) {
       </form>
 
       <ul id='post-item-list'>
-        {props.posts.map(post => {
+        {props.posts.filter(post => post.parent_id === null).map(post => {
           return (
             <li key={`post-${post.id}`} className='post-item' onClick={() => props.history.push(`/forum/${post.id}`)}>
               <p className='post-item-username'>posted by {props.users[post.author_id].username}</p>
