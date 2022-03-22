@@ -3,6 +3,7 @@ var path = require('path');
 module.exports = {
   entry: './frontend/aqua_log.jsx',
   output: {
+    sourceMapFilename: './bundle.js.map',
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: 'bundle.js'
   },
