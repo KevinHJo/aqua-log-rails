@@ -68,7 +68,7 @@ class TankShow extends React.Component {
         <div id='create-log-form-container' onClick={() => this.toggleCreateLogForm()}>
           <form id='create-log-form' onSubmit={this.handleSubmit} onClick={(e) => e.stopPropagation()}>
             <label htmlFor='logType'>Log Type: </label>
-            <select name='logType' onChange={this.update('log_type')} defaultValue="">
+            <select id='log-form-type' name='logType' onChange={this.update('log_type')} defaultValue="">
               <option className='disabled-option' value="" disabled>Select a Parameter</option>
               <option value="temperature">Temperature</option>
               <option value="ammonia">Ammonia</option>
@@ -85,7 +85,7 @@ class TankShow extends React.Component {
             </select>
 
             <label htmlFor='value'>Value: </label>
-            <input type="number"
+            <input id='log-form-value' type="number"
               name='value'
               step='any'
               value={this.state.value}
@@ -96,13 +96,13 @@ class TankShow extends React.Component {
             />
 
             <label htmlFor='date'>Date: </label>
-            <input type="datetime-local" 
+            <input id='log-form-date' type="datetime-local" 
               name='date'
               value={this.state.date}
               onChange={this.update('date')}
             />
 
-            <input type="submit" value='Create Log'/>
+            <input id='log-form-submit' type="submit" value='Create Log'/>
           </form>
         </div>
       )

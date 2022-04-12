@@ -14,10 +14,27 @@
 #create-log-form {
   background: white;
   border-radius: 25px;
+  padding: 20px;
   height: 300px;
   width: 750px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+
+#log-form-type, #log-form-submit{
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#log-form-value, #log-form-date {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+#log-form-date {
+  margin-bottom: 10px;
 }

@@ -13,16 +13,16 @@ import PostShowContainer from './post/post_show_container';
 
 const App = () => (
   <div id='page'>
-    {/* <NavBarContainer /> */}
+    <NavBarContainer />
     <div className='nav-fix' />
     <Switch>
-      {/* <AuthRoute exact path='/' component={Splash} />
-      <ProtectedRoute exact path="/home" component={HomePageContainer} /> */}
-      {/* <ProtectedRoute exact path="/tanks/:tankId" component={TankShowContainer} />
+      <AuthRoute exact path='/' component={Splash} />
+      <ProtectedRoute exact path="/home" component={HomePageContainer} />
+      <ProtectedRoute exact path="/tanks/:tankId" component={TankShowContainer} />
       <ProtectedRoute exact path="/forum" component={PostIndexContainer}/>
       <ProtectedRoute exact path="/forum/:postId" component={PostShowContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
+      <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </Switch>
     <footer>
       <div id='favicon-attr'>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
