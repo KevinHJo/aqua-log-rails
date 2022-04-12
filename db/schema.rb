@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_22_151941) do
+ActiveRecord::Schema.define(version: 2022_03_22_194122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 2022_03_22_151941) do
     t.string "title"
     t.index ["author_id"], name: "index_posts_on_author_id"
     t.index ["parent_id"], name: "index_posts_on_parent_id"
+  end
+
+  create_table "reminders", force: :cascade do |t|
+    t.integer "owner_id", null: false
+    t.string "body", null: false
+    t.datetime "start_date", null: false
+    t.integer "freq"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_reminders_on_owner_id"
   end
 
   create_table "tanks", force: :cascade do |t|

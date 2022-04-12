@@ -26,6 +26,9 @@ class User < ApplicationRecord
 
   has_many :logs
 
+  has_many :reminders,
+    foreign_key: :owner_id
+
   after_initialize :ensure_session_token
   
   attr_reader :password

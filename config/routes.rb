@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :tanks, only: [:index, :show, :create, :update, :destroy]
     resources :logs, only: [:index, :create, :update, :destroy]
     resources :posts, only: [:index, :show, :create, :update, :destroy]
+    resources :reminders, only: [:index, :create, :update, :destroy]
   end
 end
