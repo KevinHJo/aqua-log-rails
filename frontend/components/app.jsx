@@ -16,8 +16,8 @@ const App = () => (
     {/* <NavBarContainer /> */}
     <div className='nav-fix' />
     <Switch>
-      <AuthRoute exact path='/' component={Splash} />
-      <ProtectedRoute exact path="/home" component={HomePageContainer} />
+      {/* <AuthRoute exact path='/' component={Splash} />
+      <ProtectedRoute exact path="/home" component={HomePageContainer} /> */}
       {/* <ProtectedRoute exact path="/tanks/:tankId" component={TankShowContainer} />
       <ProtectedRoute exact path="/forum" component={PostIndexContainer}/>
       <ProtectedRoute exact path="/forum/:postId" component={PostShowContainer} />
