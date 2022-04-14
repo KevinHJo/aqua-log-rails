@@ -3,7 +3,6 @@ var path = require('path');
 module.exports = {
   entry: './frontend/aqua_log.jsx',
   output: {
-    sourceMapFilename: './bundle.js.map',
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: 'bundle.js'
   },
@@ -21,14 +20,14 @@ module.exports = {
       }
     ]
   },
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   resolve: {
-    fallback: {
-      buffer: false,
-      path: false,
-      assert: false,
-      fs: false
-    },
+    // fallback: {
+    //   buffer: false,
+    //   path: false,
+    //   assert: false,
+    //   fs: false
+    // },
     extensions: ['.js', '.jsx', '*']
   }
 };
