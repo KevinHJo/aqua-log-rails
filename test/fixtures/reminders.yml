@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  body       :string           not null
+#  end_date   :datetime         not null
 #  freq       :integer
 #  start_date :datetime         not null
 #  created_at :datetime         not null

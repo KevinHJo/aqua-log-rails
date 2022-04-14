@@ -1,0 +1,1 @@
+json.extract! @reminder, :id, :body, :end_date, :freq, :start_date, :owner_id

@@ -10,6 +10,7 @@ import SignupFormContainer from './session/signup_form_container';
 import TankShowContainer from './tank/tank_show_container';
 import PostIndexContainer from './post/post_index_container';
 import PostShowContainer from './post/post_show_container';
+import ReminderIndexContainer from './reminder/reminder_index_container';
 
 const App = () => (
   <div id='page'>
@@ -17,12 +18,13 @@ const App = () => (
     <div className='nav-fix' />
     <Switch>
       <AuthRoute exact path='/' component={Splash} />
+      <AuthRoute exact path="/login" component={LoginFormContainer} />
+      <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/home" component={HomePageContainer} />
       <ProtectedRoute exact path="/tanks/:tankId" component={TankShowContainer} />
       <ProtectedRoute exact path="/forum" component={PostIndexContainer}/>
       <ProtectedRoute exact path="/forum/:postId" component={PostShowContainer} />
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <ProtectedRoute exact path="/reminders" component={ReminderIndexContainer} />
     </Switch>
     <footer>
       <div id='favicon-attr'>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

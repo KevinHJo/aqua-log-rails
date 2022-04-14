@@ -44,6 +44,7 @@ class NavBar extends React.Component {
         <div id='local-nav'>
           <Link to='/home'>Tanks</Link>
           <Link to='/forum'>Forum</Link>
+          <Link to='/reminders'>Reminders</Link>
         </div>
         
         { this.getLinks() }
