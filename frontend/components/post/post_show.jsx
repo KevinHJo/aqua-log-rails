@@ -29,6 +29,7 @@ const PostShow = function(props) {
 
   const handleSubmit = function(e) {
     e.preventDefault();
+    debugger
     props.createPost(values);
     setValues({
       body: '',
