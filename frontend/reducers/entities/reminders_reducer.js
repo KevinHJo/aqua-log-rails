@@ -17,4 +17,4 @@ const RemindersReducer = (state = {}, action) => {
   }
 }
 
-export default RemindersReducer
+export default RemindersReducer;

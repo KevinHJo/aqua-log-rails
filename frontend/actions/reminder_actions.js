@@ -2,6 +2,7 @@ import * as ReminderAPIUtil from '../util/api/reminder_api_util';
 
 export const RECEIVE_REMINDERS = 'RECEIVE_REMINDERS';
 export const RECEIVE_REMINDER = 'RECEIVE_REMINDER';
+export const RECEIVE_REMINDER_ERRORS = 'RECEIVE_REMINDER_ERRORS';
 
 
 //ACTION CREATORS
