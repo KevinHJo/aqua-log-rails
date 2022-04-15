@@ -86,16 +86,32 @@ const ReminderIndex = function(props) {
     }
   }
 
-  const testNotification = () => {
+  const testNotification = async () => {
+    const reg = await navigator.serviceWorker.getRegistration();
     if (Notification.permission != "granted") {
-      Notification.requestPermission();
+      Notification.requestPermission().then(permission => console.log(permission));
     } else {
-      new Notification("testing", {
-        body: "testing body",
-        icon: 'https://raw.githubusercontent.com/KevinHJo/aqua-log-rails/main/app/assets/images/clownfish.png',
-        dir: 'rtl'
-      });
-    }
+      // new Notification("testing", {
+      //   body: "testing body",
+      //   icon: 'https://raw.githubusercontent.com/KevinHJo/aqua-log-rails/main/app/assets/images/clownfish.png',
+      //   dir: 'ltr'
+      const timestamp = new Date().getTime() + 5 * 1000
+      reg.showNotification('Testing', {
+        tag: 'aslkdfjal;skj',
+        body: 'Testing body',
+        showTrigger: new TimestampTrigger(new Date().getTime() + 1 * 1000),
+        badge: 'https://raw.githubusercontent.com/KevinHJo/aqua-log-rails/main/app/assets/images/clownfish.png',
+        icon: 'https://raw.githubusercontent.com/KevinHJo/aqua-log-rails/main/app/assets/images/clownfish.png'
+      })
+
+      reg.showNotification('Testing2', {
+        tag: 'idklfhalkdgjah',
+        body: 'Testing body',
+        showTrigger: new TimestampTrigger(new Date().getTime() + 5 * 1000),
+        badge: 'https://raw.githubusercontent.com/KevinHJo/aqua-log-rails/main/app/assets/images/clownfish.png',
+        icon: 'https://raw.githubusercontent.com/KevinHJo/aqua-log-rails/main/app/assets/images/clownfish.png'
+      })
+    };
   }
 
   return (

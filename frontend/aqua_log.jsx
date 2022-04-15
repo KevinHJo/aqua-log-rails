@@ -19,9 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+  }
+
   // //TESTING
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
   //END TESTING
   
   const root = document.getElementById("root");
