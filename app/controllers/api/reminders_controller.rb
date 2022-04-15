@@ -16,6 +16,6 @@ class Api::RemindersController < ApplicationController
 
   private
   def reminder_params
-    params.require(:reminder).permit(:body, :freq, :start_date, :end_date, :owner_id)
+    params.require(:reminder).permit(:title, :body, :freq, :start_date, :end_date, :owner_id)
   end
 end

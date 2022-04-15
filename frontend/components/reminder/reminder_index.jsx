@@ -10,6 +10,7 @@ const ReminderIndex = function(props) {
 
   const [modal, setModal] = useState(false)
   const [values, setValues] = useState({
+    title: '',
     body: '',
     freq: 1,
     end_date: '',
@@ -34,6 +35,7 @@ const ReminderIndex = function(props) {
     props.createReminder(values);
 
     setValues({
+      title: '',
       body: '',
       freq: 1,
       end_date: '',
@@ -47,7 +49,14 @@ const ReminderIndex = function(props) {
       return (
         <div id='reminder-form-container'>
           <form onSubmit={handleSubmit}>
-            <label htmlFor='body'>Reminder:</label>
+            <label htmlFor='title'>Reminder:</label>
+            <input id='reminder-form-title' type='text'
+              name='title'
+              value={values.title}
+              onChange={handleChange('title')}
+            />
+
+            <label htmlFor='body'>Body:</label>
             <input id='reminder-form-body' type="text"
               name='body'
               value={values.body}
@@ -69,6 +78,9 @@ const ReminderIndex = function(props) {
             />
 
             <label htmlFor='freq'>Frequency:</label>
+            <label>Once
+              <input type='radio' name='freq' value='0' onChange={handleChange('freq')}/>
+            </label>
             <label>Daily
               <input type='radio' name='freq' value='1' onChange={handleChange('freq')}/>
             </label>
@@ -91,11 +103,6 @@ const ReminderIndex = function(props) {
     if (Notification.permission != "granted") {
       Notification.requestPermission().then(permission => console.log(permission));
     } else {
-      // new Notification("testing", {
-      //   body: "testing body",
-      //   icon: 'https://raw.githubusercontent.com/KevinHJo/aqua-log-rails/main/app/assets/images/clownfish.png',
-      //   dir: 'ltr'
-      const timestamp = new Date().getTime() + 5 * 1000
       reg.showNotification('Testing', {
         tag: 'aslkdfjal;skj',
         body: 'Testing body',
@@ -122,7 +129,7 @@ const ReminderIndex = function(props) {
         <ul>
           {props.reminders.map(reminder => {
             return (
-              <li key={`reminder-${reminder.id}`}>{reminder.body}</li>
+              <li key={`reminder-${reminder.id}`}>{reminder.title}</li>
             )
           })}
         </ul>

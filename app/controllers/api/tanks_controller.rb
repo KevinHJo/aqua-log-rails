@@ -1,6 +1,7 @@
 class Api::TanksController < ApplicationController
   def index
     @tanks = Tank.where({owner_id: params[:user_id]})
+    @reminders = Reminder.where({owner_id: params[:user_id]})
     render 'api/tanks/index'
   end
   

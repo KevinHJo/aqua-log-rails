@@ -7,6 +7,7 @@
 #  end_date   :datetime         not null
 #  freq       :integer
 #  start_date :datetime         not null
+#  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  owner_id   :integer          not null

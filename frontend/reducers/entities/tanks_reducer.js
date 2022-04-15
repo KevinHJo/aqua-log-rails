@@ -15,7 +15,7 @@ const TanksReducer = (state = {}, action ) => {
       return nextState
     case RECEIVE_TANKS:
       nextState = {};
-      action.tanks.forEach(tank => nextState[tank.id] = tank);
+      action.data.tanks.forEach(tank => nextState[tank.id] = tank);
       return nextState;
     default:
       return state;

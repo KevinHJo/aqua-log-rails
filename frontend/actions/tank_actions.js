@@ -12,10 +12,10 @@ const receiveTank = tank => {
   }
 }
 
-const receiveTanks = tanks => {
+const receiveTanks = data => {
   return {
     type: RECEIVE_TANKS,
-    tanks
+    data
   }
 }
 

@@ -10,6 +10,7 @@ User.destroy_all
 Tank.destroy_all
 Log.destroy_all
 Post.destroy_all
+Reminder.destroy_all
 
 # Seed users
 puts("Creating users")
@@ -60,5 +61,12 @@ post1 = Post.create({title: 'New here!', body: "Hello! I'm new to AquaLog!", aut
 post2 = Post.create({body: "Welcome! Make sure to follow the community guidelines and feel free to share your tank!", author_id: kevin.id, parent_id: post1.id})
 post3 = Post.create({title: 'What powerhead should I get?', body: "I'm setting up a 25 gallon nano reef system, and I was wondering what powerhead I should get. I plan to have a mix of SPS and LPS corals, so I think I need something decently powerful", author_id: kevin.id})
 post4 = Post.create({body: "I use an AI Nero 3. It's a little powerful for a small system, but it gets the job done and allows for a possible upgrade in the future. It'll be a good choice if you have SPS coral that need higher flow.", author_id: demo_user.id, parent_id: post3.id})
+puts("Done! :)")
+puts("----------------------------------------")
+
+#Seed reminders
+puts ("Creating reminders")
+reminder1 = Reminder.create({title: "Water Change", body: "Perform a 20% water change", start_date: "2022-04-15 10:00:00 UTC", end_date: "2022-05-06 10:00:00 UTC", freq: 7, owner_id: demo_user.id})
+reminder2 = Reminder.create({title: "Feed Fish", body: "Pinch of pellets daily", start_date: "2022-04-15 10:00:00 UTC", end_date: "2022-05-06 10:00:00 UTC", freq: 1, owner_id: demo_user.id})
 puts("Done! :)")
 puts("----------------------------------------")

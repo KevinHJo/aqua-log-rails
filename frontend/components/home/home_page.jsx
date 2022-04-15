@@ -1,4 +1,5 @@
 import React from 'react';
+import * as ReminderUtil from '../../util/reminder_util'
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -7,7 +8,8 @@ class HomePage extends React.Component {
     this.state = {
       name: '',
       owner_id: this.props.currentUser.id,
-      modal: false
+      modal: false,
+      notificationsSet: false
     }
 
     this.sendToTank = this.sendToTank.bind(this);
@@ -18,6 +20,13 @@ class HomePage extends React.Component {
   componentDidMount() {
     if (this.props.userTanks.length === 0) {
       this.props.fetchUserTanks(this.props.currentUser.id)
+    }
+  }
+
+  componentDidUpdate() {
+    if (!this.state.notificationsSet) {
+      ReminderUtil.scheduleReminderNotifications(this.props.reminders)
+      this.setState({notificationsSet: true})
     }
   }
 
@@ -44,6 +53,8 @@ class HomePage extends React.Component {
       modal: false
     })
   }
+
+  
 
   renderCreateTankForm() {
     if (this.state.modal) {
