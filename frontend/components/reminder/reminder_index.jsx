@@ -86,6 +86,18 @@ const ReminderIndex = function(props) {
     }
   }
 
+  const testNotification = () => {
+    if (Notification.permission != "granted") {
+      Notification.requestPermission();
+    } else {
+      new Notification("testing", {
+        body: "testing body",
+        icon: 'https://raw.githubusercontent.com/KevinHJo/aqua-log-rails/main/app/assets/images/clownfish.png',
+        dir: 'rtl'
+      });
+    }
+  }
+
   return (
     <div id='reminders-home'>
       {renderCreateReminderForm()}
@@ -101,6 +113,8 @@ const ReminderIndex = function(props) {
       </div>
 
       <button onClick={toggleModal}>New Reminder</button>
+
+      <button onClick={testNotification}>test notification</button>
     </div>
   )
 }
