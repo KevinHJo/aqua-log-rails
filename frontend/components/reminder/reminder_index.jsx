@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import Calendar from './calendar';
 
 const ReminderIndex = function(props) {
   const [firstReminder] = useState(props.reminders[0])
@@ -126,6 +127,7 @@ const ReminderIndex = function(props) {
       {renderCreateReminderForm()}
 
       <div id='reminder-list-container'>
+        <h3>Your Reminders</h3>
         <ul>
           {props.reminders.map(reminder => {
             return (
@@ -133,11 +135,14 @@ const ReminderIndex = function(props) {
             )
           })}
         </ul>
+        
+        <button onClick={toggleModal}>New Reminder</button>
+        <button onClick={testNotification}>test notification</button>
       </div>
 
-      <button onClick={toggleModal}>New Reminder</button>
+      <Calendar reminders={props.reminders}/>
 
-      <button onClick={testNotification}>test notification</button>
+      
     </div>
   )
 }

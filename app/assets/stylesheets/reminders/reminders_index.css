@@ -1,0 +1,9 @@
+#reminders-home {
+  height: 91%;
+  width: 75%;
+  padding: 50px;
+  background: white;
+  margin: auto;
+  display: flex;
+  justify-content:space-around;
+}
