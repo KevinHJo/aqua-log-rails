@@ -1,5 +1,6 @@
 footer {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   position: fixed;
   bottom: 0;
@@ -14,5 +15,16 @@ footer {
 }
 
 #favicon-attr a, #favicon-attr a:visited {
-  color: blue;
+  color: rgb(148, 148, 72);
+}
+
+#socials-list {
+  width: 80px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#socials-list svg {
+  height: 35px;
 }

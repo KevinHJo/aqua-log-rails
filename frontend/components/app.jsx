@@ -1,6 +1,8 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 import Splash from './splash'
 import HomePageContainer from './home/home_page_container';
@@ -28,7 +30,15 @@ const App = () => (
     </Switch>
     <div className='footer-fix' />
     <footer>
-      <div id='favicon-attr'>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      <div id='favicon-attr'>Icons made by <a href="https://www.freepik.com" target='_blank' rel="noopener noreferrer" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" target='_blank' rel="noopener noreferrer" title="Flaticon">www.flaticon.com</a></div>
+      <div id='socials-list'>
+        <a href='https://github.com/KevinHJo/aqua-log-rails' target='_blank' rel="noopener noreferrer">
+          <FontAwesomeIcon icon={ faGithub } size='xl' inverse />
+        </a>
+        <a href='https://www.linkedin.com/in/kevin-jo-379bb5150/' target='_blank' rel="noopener noreferrer">
+          <FontAwesomeIcon icon={ faLinkedin } size='xl' inverse />
+        </a>
+      </div>
     </footer>
   </div>
 );
