@@ -22,7 +22,7 @@ const PostIndex = function(props) {
 
   const handleSubmit = function(e) {
     e.preventDefault();
-    debugger
+    // debugger
     props.createPost(values);
     setValues({
       title: '',
