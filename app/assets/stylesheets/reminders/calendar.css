@@ -1,0 +1,84 @@
+.reminder-calendar {
+
+}
+
+.calendar-nav {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+#calendar-nav-left, #calendar-nav-right {
+  padding: 10px 10px;
+}
+
+.calendar-month {
+  font-weight: bolder;
+  color: rgb(52, 96, 133);
+  padding: 10px 30px;
+}
+
+.calendar-year {
+  padding: 10px 30px;
+}
+
+.calendar-month:hover, .calendar-year:hover, #calendar-nav-left, #calendar-nav-right {
+  cursor: pointer
+}
+
+.calendar-days, .calendar-months, .calendar-years {
+  border-collapse: collapse;
+}
+
+.calendar-days th {
+  width: 100px;
+  height: 50px;
+}
+
+.calendar-days td {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  vertical-align: top;
+}
+
+.calendar-days td:hover {
+  cursor: pointer;
+}
+
+.calendar-days td h4 {
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.calendar-reminder {
+  margin-left: 5%;
+  margin-bottom: 5px;
+  padding: 5px 5px;
+  width: 90%;
+  border-radius: 5px;
+  background:rgb(52, 96, 133);
+  color: white;
+}
+
+.calendar-months thead, .calendar-years thead {
+  font-size: 20px;
+  height: 50px;
+}
+
+.calendar-months td, .calendar-years td {
+  border: 1px solid black;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.calendar-months td:hover, .calendar-years td:hover {
+  background:rgb(52, 96, 133);
+  color: white;
+}
+
+.calendar-months span, .calendar-years span {
+  width: 20px;
+  margin: auto;
+}
