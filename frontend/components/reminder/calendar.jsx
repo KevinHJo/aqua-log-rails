@@ -49,7 +49,7 @@ class Calendar extends React.Component {
     years = years.map(year => {
       return (
         <td
-          key={year}
+          key={`calendar-year-${year}`}
           className='calendar-year'
           onClick={() => {
             this.setYear(year);
@@ -74,7 +74,7 @@ class Calendar extends React.Component {
 
     rows.push(cells);
     return rows.map((d,i) => {
-      return <tr key={i+31}>{d}</tr>
+      return <tr key={`year-list-${i+31}`}>{d}</tr>
     })
   }
 
@@ -82,7 +82,7 @@ class Calendar extends React.Component {
     const months = this.state.months.map(month => {
       return (
         <td
-          key={month}
+          key={`calendar-month-${month}`}
           className='calendar-month'
           onClick={e => this.setMonth(month)}
         >
@@ -105,14 +105,14 @@ class Calendar extends React.Component {
 
     rows.push(cells);
     return rows.map((d,i) => {
-      return <tr key={i+31}>{d}</tr>
+      return <tr key={`month-list-${i+31}`}>{d}</tr>
     })
   };
   
   createWeekdayList() {
     return moment.weekdaysShort().map(day => {
       return (
-        <th key={day} className='week-day'>
+        <th key={`calendar-weekday-${day}`} className='week-day'>
           {day}
         </th>
       );
@@ -152,9 +152,9 @@ class Calendar extends React.Component {
       const date = new Date(reminder.start_date)
       if (date.getMonth() === monthIdx && date.getFullYear() === selectedYear) {
         if (reminders[date.getDate()]) {
-          reminders[date.getDate()].push(<li key={reminder.id} className='calendar-reminder' onClick={e => this.toggleReminderShow(e, reminder)}>{reminder.title}</li>)
+          reminders[date.getDate()].push(<li key={`reminder-${reminder.id}`} className='calendar-reminder' onClick={e => this.toggleReminderShow(e, reminder)}>{reminder.title}</li>)
         } else {
-          reminders[date.getDate()] = [<li key={reminder.id} className='calendar-reminder' onClick={e => this.toggleReminderShow(e, reminder)}>{reminder.title}</li>]
+          reminders[date.getDate()] = [<li key={`reminder-${reminder.id}`} className='calendar-reminder' onClick={e => this.toggleReminderShow(e, reminder)}>{reminder.title}</li>]
         }
       }
     });
@@ -164,7 +164,7 @@ class Calendar extends React.Component {
     for (let i=1; i <= this.state.dateObject.daysInMonth(); i++) {
       let today = ((i === this.currentDay()) && (this.state.currentDate.month() === monthIdx) && (this.state.currentDate.year() === year)) ? 'today' : '';
       daysInMonth.push(
-        <td key={i} className={`calendar-day ${today}`} onClick={e => this.selectDay(e, i)}>
+        <td key={`day-${i}`} className={`calendar-day-${today}`} onClick={this.props.toggleModal}>
           <h4>{i}</h4>
           {reminders[i]}
         </td>
@@ -192,7 +192,7 @@ class Calendar extends React.Component {
 
     //Wraps each inner array in a <tr> tag
     let days = rows.map((d, i) => {
-      return <tr key={i+1}>{d}</tr>
+      return <tr key={`calendar-row-${i+1}`}>{d}</tr>
     });
 
     return days;
