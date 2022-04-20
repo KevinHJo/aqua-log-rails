@@ -100,3 +100,81 @@ export default LogIndex
 ```
 
 ### Community Forum
+The social aspect of AquaLog is accomplished through a community forum. Original posts can be created by logged in users, and these are displayed on the forum home page. When a users clicks on an original post, they are able to see all comments and replies associated with it.
+
+![image](https://raw.githubusercontent.com/KevinHJo/aqua-log-rails/main/public/aqualog-forum.PNG)
+
+### Scheduled Reminders
+Maintaining a healthy aquarium requires constant, structured upkeep. The "Reminders" tab allows users to view their scheduled notifications in a displayed calendar as well as add new ones. The calendar is built completely from scratch using React components and the Moment library. Desktop notifications are accomplished through the built in JavaScript Notifications API as well as ServiceWorkers.
+
+```javascript
+class Calendar extends React.Component {
+.
+.
+.
+createDaysInMonth() {
+    //Fills the first week with blank slots until the first day of the month
+    let blanks = [];
+    for (let i=0; i < this.firstDayOfMonth(); i++) {
+      blanks.push(
+        <td className='calendar-day empty'>{''}</td>
+      );
+    };
+
+    const reminders = {};
+    const year = this.state.dateObject.year();
+    const monthIdx = this.state.dateObject.month();
+    const selectedYear = parseInt(this.state.dateObject.format("Y"))
+
+    this.props.reminders.forEach(reminder => {
+      const date = new Date(reminder.start_date)
+      if (date.getMonth() === monthIdx && date.getFullYear() === selectedYear) {
+        if (reminders[date.getDate()]) {
+          reminders[date.getDate()].push(<li key={`reminder-${reminder.id}`} className='calendar-reminder' onClick={e => this.toggleReminderShow(e, reminder)}>{reminder.title}</li>)
+        } else {
+          reminders[date.getDate()] = [<li key={`reminder-${reminder.id}`} className='calendar-reminder' onClick={e => this.toggleReminderShow(e, reminder)}>{reminder.title}</li>]
+        }
+      }
+    });
+
+    //Fills the calendar with real slots until the end of the month
+    let daysInMonth = [];
+    for (let i=1; i <= this.state.dateObject.daysInMonth(); i++) {
+      let today = ((i === this.currentDay()) && (this.state.currentDate.month() === monthIdx) && (this.state.currentDate.year() === year)) ? 'today' : '';
+      daysInMonth.push(
+        <td key={`day-${i}`} className={`calendar-day-${today}`} onClick={this.props.toggleModal}>
+          <h4>{i}</h4>
+          {reminders[i]}
+        </td>
+      );
+    };
+
+    //Combines blank slots with filled slots
+    const totalSlots = [...blanks, ...daysInMonth];
+    let rows = [];
+    let cells = [];
+
+    //Refactors array into rows of 7 days
+    totalSlots.forEach((row, i) => {
+      if (i % 7 !== 0) {
+        cells.push(row);
+      } else {
+        rows.push(cells);
+        cells = [];
+        cells.push(row);
+      }
+      if (i === totalSlots.length - 1) {
+        rows.push(cells);
+      }
+    });
+
+    //Wraps each inner array in a <tr> tag
+    let days = rows.map((d, i) => {
+      return <tr key={`calendar-row-${i+1}`}>{d}</tr>
+    });
+
+    return days;
+    .
+    .
+    .
+  }
