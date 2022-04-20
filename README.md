@@ -5,6 +5,9 @@
 ## Table of Contents
 + [Technologies](#technologies)
 + [Features](#features)
+  - [Parameter Logging](#parameter-logging)
+  - [Community Forum](#community-forum)
+  - [Scheduled Reminders](#scheduled-reminders)
 
 ## Technologies
 + AquaLog utilizes a Ruby on Rails backend to manage and access a postgresql database.
